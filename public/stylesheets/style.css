@@ -1,8 +1,115 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center; */
 }
 
-a {
-  color: #00B7FF;
+div {
+  position: relative;
+  width: 300px;
+  height:150px;
+}
+/* マップ背景 */
+canvas#map {
+  border-radius: 20px;
+  background-color: rgb(32, 192, 72);
+  width: 300px;
+  height:150px;
+}
+
+/* x軸 */
+canvas#x_border_1 {
+  border-bottom: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+  bottom: 30px;
+}
+
+canvas#x_border_2 {
+  border-bottom: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+  bottom: 60px;
+}
+
+canvas#x_border_3 {
+  border-bottom: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+  bottom: 90px;
+}
+
+canvas#x_border_4 {
+  border-bottom: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+  bottom: 120px;
+}
+
+/* y軸 */
+canvas#y_border_1 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 30px;
+}
+
+canvas#y_border_2 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 60px;
+}
+
+canvas#y_border_2_5 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 90px;
+}
+
+canvas#y_border_3 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 120px;
+}
+
+canvas#y_border_4 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 150px;
+}
+
+canvas#y_border_5 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 180px;
+}
+
+canvas#y_border_6 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 210px;
+}
+
+
+canvas#y_border_7 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 240px;
+}
+
+canvas#y_border_8 {
+  border-left: 3px solid black;
+  position: absolute;
+  z-index: 1;
+  left: 270px;
 }

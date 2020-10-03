@@ -7,6 +7,14 @@ express --view=pug submarine-online
 yarn install
 
 
-#サーバー起動
+
+#運用
+##サーバー起動
 PORT=8000 yarn start
+
+##GitHubに挙げる
+git add *
+git commit -m "first-commit"
+
+
 
