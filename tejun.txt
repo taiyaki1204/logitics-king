@@ -5,16 +5,27 @@ cd ~/workspace
 yarn global add express-generator@4.16.0
 express --view=pug submarine-online
 yarn install
+yarn add helmet@1.1.0
+
+##jquery関連
+yarn add --dev webpack@3.10.0 babel-loader@7 babel-core babel-preset-env
+touch webpack.config.js
+mkdir app
+touch app/entry.js
+yarn add jquery@3.4.1
+
 
 
 
 #運用
 ##サーバー起動
 PORT=8000 yarn start
+npx webpack;PORT=8000 yarn start
 
 ##GitHubに挙げる
 git add *
 git commit -m "first-commit"
+git push -u origin master
 
 
 

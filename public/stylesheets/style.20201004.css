@@ -9,7 +9,6 @@ div {
   height:150px;
 }
 /* マップ背景 */
-/* jQueryでいじくる */
 canvas#map {
   border-radius: 20px;
   background-color: rgb(32, 192, 72);
