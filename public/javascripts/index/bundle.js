@@ -81,7 +81,8 @@ console.log('Hello!');
 //initにかくとスコープ的に触れなくなるため、privateで記載する。
 var gameObj = {
   MAP_CANVAS_W: 300,
-  MAP_CANVAS_H: 150
+  MAP_CANVAS_H: 150,
+  isDisplayedFlag: 0
 };
 
 //初期のマップのアイコン表示
@@ -89,50 +90,32 @@ var gameObj = {
 function init() {
   //HTML5 ２Dキャンバス
   var mapCanvas = (0, _jquery2.default)('#map')[0];
-  var ctxMap = mapCanvas.getContext('2d');
-  //fillRect(x,y,width,height);
-  for (var i = 1; i < 6; i++) {
-    ctxMap.fillRect(gameObj.MAP_CANVAS_W / 10 * i, gameObj.MAP_CANVAS_H / 5 * i, 10, 10);
-    console.log('21!!!DEBUG!!!x,y:' + gameObj.MAP_CANVAS_W / 10 * i + ', ' + gameObj.MAP_CANVAS_H / 5 * i);
-  }
-  //ctxMap.fillRect(0,0,5,5)
-  ctxMap.fillRect(20, 20, 5, 5);
-  ctxMap.fillRect(60, 15, 5, 5);
-
-  // console.log(`21!!!DEBUG!!!:${mapCanvas}`);
+  gameObj.ctxMap = mapCanvas.getContext('2d');
 }
 init();
 
-function drawRadar(ctxRader) {
-  var x = gameObj.RADER_CANVAS_WIDTH / 2;
-  var y = gameObj.RADER_CANVAS_HEIGHT / 2;
-  var r = gameObj.RADER_CANVAS_WIDTH * 1.5 / 2; //対角線の長さの半分
-
-  ctxRader.save(); //save
-
-  ctxRader.beginPath();
-  ctxRader.translate(x, y);
-  ctxRader.rotate(getRadian(gameObj.DEG));
-
-  ctxRader.fillStyle = 'rgba(0, 220, 0, 0.5';
-
-  ctxRader.arc(0, 0, r, getRadian(0), getRadian(-30), true);
-  ctxRader.lineTo(0, 0);
-
-  ctxRader.fill();
-
-  ctxRader.restore(); //元の設定を取得
-  gameObj.DEG = (gameObj.DEG + 5) % 360;
+function ticker() {
+  gameObj.ctxMap.clearRect(0, 0, gameObj.MAP_CANVAS_W, gameObj.MAP_CANVAS_H); //まっしろ
+  drawMap(gameObj.ctxMap);
 }
+setInterval(ticker, 500);
 
-//固定のアイコンを表示
-//Start:S、Goal：G
-function drawFixiCon(ctxRader) {
-  ctxRader.save();
-  ctxRader.translate(gameObj.RADER_CANVAS_WIDTH / 2, gameObj.RADER_CANVAS_HEIGHT / 2);
+function drawMap(ctxMap) {
+  //デフォルトの状態を保持
+  ctxMap.save();
+  //描写
+  if (gameObj.isDisplayedFlag) {
+    ctxMap.font = "15px Arial";
+    ctxMap.fillStyle = "#FFFFFF";
+    ctxMap.fillText("S", 20, 130);
+    ctxMap.fillText("E", 260, 25);
+  }
+  ctxMap.fillText(gameObj.isDisplayedFlag, 260, 130);
+  //元に戻す
+  ctxMap.restore();
+  //点滅用
 
-  ctxRader.drawImage(gameObj.submarineImage, -(gameObj.submarineImage.width / 2), -(gameObj.submarineImageheight / 2));
-  ctxRader.restore();
+  gameObj.isDisplayedFlag = (gameObj.isDisplayedFlag + 1) % 2;
 }
 
 /** gameObj.ctxRader = raderCanvas.getContext('2d');
